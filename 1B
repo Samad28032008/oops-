@@ -1,1 +1,37 @@
+// Abstract class
+abstract class Insurance {
+    // Abstract method with no body
+    abstract void calculatePremium();
+}
 
+// Subclass
+class CarInsurance extends Insurance {
+    double carValue;
+    double ratePercentage;
+
+    // Constructor
+    CarInsurance(double carValue, double ratePercentage) {
+        this.carValue = carValue;
+        this.ratePercentage = ratePercentage;
+    }
+
+    // Providing implementation for the abstract method
+    @Override
+    void calculatePremium() {
+        double premium = carValue * (ratePercentage / 100);
+        System.out.println("Car Value: $" + carValue);
+        System.out.println("Premium Rate: " + ratePercentage + "%");
+        System.out.println("Calculated Car Insurance Premium: $" + premium);
+    }
+}
+
+// Main class
+public class AbstractClassDemo {
+    public static void main(String[] args) {
+        // Creating an object of the subclass
+        CarInsurance myCarInsurance = new CarInsurance(30000.0, 4.5);
+        
+        // Calling the overridden method
+        myCarInsurance.calculatePremium();
+    }
+}
