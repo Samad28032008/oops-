@@ -1,1 +1,43 @@
+// Superclass
+class Vehicle {
+    String model;
+    String fuelType;
+
+    // Constructor
+    Vehicle(String model, String fuelType) {
+        this.model = model;
+        this.fuelType = fuelType;
+    }
+
+    // Method to display vehicle details
+    void display() {
+        System.out.println("Model: " + model);
+        System.out.println("Fuel Type: " + fuelType);
+    }
+}
+
+// Subclass
+class ElectricVehicle extends Vehicle {
+    int batteryCapacity; 
+
+    // Constructor
+    ElectricVehicle(String model, String fuelType, int batteryCapacity) {
+        super(model, fuelType); // Call to Vehicle's constructor
+        this.batteryCapacity = batteryCapacity;
+    }
+
+    // Overridden display method
+    void display() {
+        super.display(); // Call to Vehicle's display
+        System.out.println("Battery Capacity: " + batteryCapacity + " kWh");
+    }
+}
+
+// Main class
+public class AutomobileDemo {
+    public static void main(String[] args) {
+        ElectricVehicle ev = new ElectricVehicle("Tesla Model 3", "Electric", 75);
+        ev.display();
+    }
+}
 
