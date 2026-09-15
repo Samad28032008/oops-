@@ -1,1 +1,45 @@
+// Custom Exception Class
+class InvalidFuelTypeException extends Exception {
+    // Constructor that accepts the exception message
+    InvalidFuelTypeException(String message) {
+        super(message);
+    }
+}
 
+// Main class
+public class CustomExceptionDemo {
+    
+    // Method to validate fuel type
+    static void checkFuelType(String fuel) throws InvalidFuelTypeException {
+        // Checking for valid fuel types (case-insensitive)
+        if (fuel.equalsIgnoreCase("Petrol") || 
+            fuel.equalsIgnoreCase("Diesel") || 
+            fuel.equalsIgnoreCase("Electric")) {
+            System.out.println("Fuel type '" + fuel + "' accepted. Proceeding to fill the tank.");
+        } else {
+            // Throwing the custom exception if the fuel type is unsupported
+            throw new InvalidFuelTypeException("Unsupported fuel type entered: " + fuel);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Valid fuel type test
+        try {
+            System.out.println("Test Case 1: Valid Fuel");
+            checkFuelType("Electric");
+        } catch (InvalidFuelTypeException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+
+        System.out.println("-------------------------");
+
+        // Invalid fuel type test
+        try {
+            System.out.println("Test Case 2: Invalid Fuel");
+            checkFuelType("Water");
+        } catch (InvalidFuelTypeException e) {
+            // Catching and printing the custom exception
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+    }
+}
