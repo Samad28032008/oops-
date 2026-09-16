@@ -6,6 +6,7 @@ class InvalidFuelTypeException extends Exception {
     }
 }
 
+
 // Main class
 public class CustomExceptionDemo {
     
